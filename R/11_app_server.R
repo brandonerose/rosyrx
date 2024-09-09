@@ -12,4 +12,7 @@ app_server <- function(input, output, session) {
       style="width: 450px; max-width: 100%; height: 650px;"
     )
   })
+  if(golem::app_dev()){
+    mod_backend_server()
+  }
 }

@@ -21,39 +21,6 @@ golem_add_external_resources <- function(...) {
     ...
   )
 }
-#' @title app_sys
-#' @param ... character vectors, specifying subdirectory and file(s)
-#' within your package. The default, none, returns the root of the app.
-#' @noRd
-app_sys <- function(...) {
-  system.file(..., package = .packageName)
-}
-#' @title get_golem_config
-#' @param value Value to retrieve from the config file.
-#' @param config GOLEM_CONFIG_ACTIVE value. If unset, R_CONFIG_ACTIVE.
-#' If unset, "default".
-#' @param use_parent Logical, scan the parent directory for config file.
-#' @param file Location of the config file
-#' @noRd
-get_golem_config <- function(
-    value,
-    config = Sys.getenv(
-      "GOLEM_CONFIG_ACTIVE",
-      Sys.getenv(
-        "R_CONFIG_ACTIVE",
-        "default"
-      )
-    ),
-    use_parent = TRUE,
-    file = app_sys("golem-config.yml")
-) {
-  config::get(
-    value = value,
-    config = config,
-    file = file,
-    use_parent = use_parent
-  )
-}
 #' @title run_RosyRx
 #' @param ... arguments to pass to golem_opts.
 #' See `?golem::get_golem_options` for more details.
