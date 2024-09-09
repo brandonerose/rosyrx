@@ -9,7 +9,7 @@
 #'
 #' @noRd
 app_sys <- function(...) {
-  system.file(..., package = "rosyrx")
+  system.file(..., package = "RosyRx")
 }
 #' Read App Config
 #'
@@ -21,16 +21,16 @@ app_sys <- function(...) {
 #'
 #' @noRd
 get_golem_config <- function(
-  value,
-  config = Sys.getenv(
-    "GOLEM_CONFIG_ACTIVE",
-    Sys.getenv(
-      "R_CONFIG_ACTIVE",
-      "default"
-    )
-  ),
-  use_parent = TRUE,
-  file = app_sys("golem-config.yml")
+    value,
+    config = Sys.getenv(
+      "GOLEM_CONFIG_ACTIVE",
+      Sys.getenv(
+        "R_CONFIG_ACTIVE",
+        "default"
+      )
+    ),
+    use_parent = TRUE,
+    file = app_sys("golem-config.yml")
 ) {
   config::get(
     value = value,

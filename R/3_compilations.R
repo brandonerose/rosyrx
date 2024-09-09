@@ -1,5 +1,3 @@
-
-
 update_rosyrx_metadata <- function(rosyrx){
   rosyrx$metadata <- list(
     version = get_rxn_getRxNormVersion(),
@@ -16,7 +14,6 @@ update_rosyrx_metadata <- function(rosyrx){
   )
   return(rosyrx)
 }
-
 update_rosyrx_data <- function(rosyrx){
   rosyrx$data <- list(
     displayTerms = get_rxn_getDisplayTerms(),
@@ -48,9 +45,8 @@ update_rosyrx_data <- function(rosyrx){
   rosyrx$data[["rxn_connections"]] <-rxn_connections[which(rxn_connections$from != rxn_connections$to),]
   return(rosyrx)
 }
-
 #' @export
 show_rosyrx<-function(rosyrx){
-  rosyrx$metadata %>% rosyutils::add_list_to_global()
-  rosyrx$data %>% rosyutils::add_list_to_global()
+  rosyrx$metadata %>% RosyUtils::add_list_to_global()
+  rosyrx$data %>% RosyUtils::add_list_to_global()
 }

@@ -1,12 +1,12 @@
-Package: rosyrx
+Package: RosyRx
 Title: RosyRx
 Version: 0.0.0.9000
 Authors@R: 
     person("Brandon", "Rose", , "thecodingdocs@gmail.com", role = c("cre", "aut"))
 Description: R Package for Prescritions centered around RxNorm.
 License: MIT + file LICENSE
-URL: https://github.com/brandonerose/rosyrx
-BugReports: https://github.com/brandonerose/rosyrx/issues
+URL: https://github.com/brandonerose/RosyRx
+BugReports: https://github.com/brandonerose/RosyRx/issues
 Depends: 
     R (>= 2.10)
 Imports: 
@@ -16,10 +16,12 @@ Imports:
     httr,
     magrittr,
     progress,
-    rosyutils,
-    shiny (>= 1.8.0)
+    RosyUtils,
+    shiny (>= 1.8.0),
+    shinydashboard,
+    shinydashboardPlus
 Remotes: 
-    github::brandonerose/rosyutils
+    github::brandonerose/RosyUtils
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2

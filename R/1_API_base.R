@@ -3,7 +3,6 @@ BASE_RXNORM <- paste0(BASE_RXNAV,"REST/")
 BASE_RXNORM_PRESCRIBE <- paste0(BASE_RXNORM,"Prescribe/")
 BASE_RXCLASS <- paste0(BASE_RXNORM,"rxclass/")
 BASE_RXTERMS <- paste0(BASE_RXNORM,"RxTerms/")
-
 api <- function(base=BASE_RXNORM,path,query=NULL){
   result <- httr::GET(
     url = paste0(base,path,".json"),
