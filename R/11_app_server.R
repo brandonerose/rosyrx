@@ -5,6 +5,8 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session) {
+  values<-reactiveValues()
+  values$look <- "hey"
   output$html_test <- renderUI({
     tags$iframe(
       class = "pubchem-widget",
@@ -13,6 +15,6 @@ app_server <- function(input, output, session) {
     )
   })
   if(golem::app_dev()){
-    mod_backend_server()
+    mod_backend_server(input = input, values = values)
   }
 }
