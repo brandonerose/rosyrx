@@ -1,6 +1,6 @@
 Package: RosyRx
 Title: RosyRx
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: 
     person("Brandon", "Rose", , "thecodingdocs@gmail.com", role = c("cre", "aut"))
 Description: R Package for Prescritions centered around RxNorm.
