@@ -15,6 +15,6 @@ app_server <- function(input, output, session) {
     )
   })
   if(golem::app_dev()){
-    mod_backend_server(input = input, values = values)
+    mod_backend_server("backend",input = input, values = values)
   }
 }
