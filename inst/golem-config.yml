@@ -3,6 +3,6 @@ default:
   golem_version: 0.0.0.9002
   app_prod: yes
 production:
-  app_prod: no
+  app_prod: yes
 dev:
   golem_wd: !expr golem::pkg_path()

@@ -1,25 +1,6 @@
 #' @import RosyUtils
 #' @import shiny
 #' @import shinydashboard
-custom_sidebar <- function(){
-  sidebarMenu(
-    id="sb1",
-    menuItem(
-      text="Home",
-      tabName = "home",
-      icon =shiny::icon("home")
-    ),
-    conditionalPanel(
-      "input.sb1 === 'home'",
-      selectInput(
-        "dimensions",
-        label = "Structure",
-        choices = c("2D-Structure","3D-Conformer"),
-        selected = "2D-Structure"
-      )
-    )
-  )
-}
 custom_body_tabs <- function(){
   tabItem(
     "home",
@@ -45,7 +26,22 @@ app_ui<- function(request) {
         sidebarExpandOnHover = F
       ),
       header = dbHeader(),
-      sidebar = dbSidebar(custom_sidebar()),
+      sidebar = dbSidebar(
+        menuItem(
+          text="Home",
+          tabName = "home",
+          icon =shiny::icon("home")
+        ),
+        conditionalPanel(
+          "input.sb1 === 'home'",
+          selectInput(
+            "dimensions",
+            label = "Structure",
+            choices = c("2D-Structure","3D-Conformer"),
+            selected = "2D-Structure"
+          )
+        )
+      ),
       body = dbBody(custom_body_tabs()),
       controlbar = dbControlbar(),
       footer = RosyUtils:::TCD_NF(),
