@@ -1,24 +1,39 @@
-#' Access files in the current app
+#' Add external Resources to the Application
 #'
-#' NOTE: If you manually change your package name in the DESCRIPTION,
-#' don't forget to change it here too, and in the config file.
-#' For a safer name change mechanism, use the `golem::set_golem_name()` function.
+#' This function is internally used to add external
+#' resources inside the Shiny application.
 #'
+#' @import shiny
+#' @importFrom golem add_resource_path activate_js favicon bundle_resources
+#' @noRd
+golem_add_external_resources <- function(...) {
+  add_resource_path(
+    "www",
+    app_sys("app/www")
+  )
+  tags$head(
+    favicon(ext = 'png'),
+    bundle_resources(
+      path = app_sys("app/www"),
+      app_title = .packageName
+    ),
+    includeCSS(system.file(package="table1", "table1_defaults_1.0/table1_defaults.css")),
+    ...
+  )
+}
+#' @title app_sys
 #' @param ... character vectors, specifying subdirectory and file(s)
 #' within your package. The default, none, returns the root of the app.
-#'
 #' @noRd
 app_sys <- function(...) {
-  system.file(..., package = "RosyRx")
+  system.file(..., package = .packageName)
 }
-#' Read App Config
-#'
+#' @title get_golem_config
 #' @param value Value to retrieve from the config file.
 #' @param config GOLEM_CONFIG_ACTIVE value. If unset, R_CONFIG_ACTIVE.
 #' If unset, "default".
 #' @param use_parent Logical, scan the parent directory for config file.
 #' @param file Location of the config file
-#'
 #' @noRd
 get_golem_config <- function(
     value,
@@ -37,5 +52,31 @@ get_golem_config <- function(
     config = config,
     file = file,
     use_parent = use_parent
+  )
+}
+#' @param ... arguments to pass to golem_opts.
+#' See `?golem::get_golem_options` for more details.
+#' @inheritParams shiny::shinyApp
+#'
+#' @export
+#' @importFrom shiny shinyApp
+#' @importFrom golem with_golem_options
+run_app <- function(
+    onStart = NULL,
+    options = list(),
+    enableBookmarking = NULL,
+    uiPattern = "/",
+    ...
+) {
+  with_golem_options(
+    app = shinyApp(
+      ui = app_ui,
+      server = app_server,
+      onStart = onStart,
+      options = options,
+      enableBookmarking = enableBookmarking,
+      uiPattern = uiPattern
+    ),
+    golem_opts = list(...)
   )
 }
