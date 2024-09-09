@@ -1,4 +1,4 @@
-# RXNORM ------------------
+## RXNORM ------------------
 ## Metadata
 get_rxn_getIdTypes <- function(){api(path = "idtypes")$idTypeList$idName%>% as.character()}
 get_rxn_getPropCategories <- function(){api(path = "propCategories")$propCategoryList$propCategory %>% as.character()}
@@ -43,7 +43,7 @@ get_rxn_getRxNormName <- function(){'/rxcui/rxcui'}
 get_rxn_getRxProperty <- function(){'/rxcui/rxcui/property'}
 get_rxn_getRxcuiHistoryStatus <- function(){'/rxcui/rxcui/historystatus'}
 get_rxn_getSpellingSuggestions <- function(){'/spellingsuggestions'}
-# RXNORM PRESCRIBE ---------------------
+## RXNORM PRESCRIBE ---------------------
 ## Metadata
 get_rxp_getIdTypes <- function(){api(base = BASE_RXNORM_PRESCRIBE,path = "idtypes")$idTypeList$idName%>% as.character()}
 get_rxp_getPropCategories <- function(){api(base = BASE_RXNORM_PRESCRIBE,path = "propCategories")$propCategoryList$propCategory %>% as.character()}
@@ -70,7 +70,7 @@ get_rxp_getRxConceptProperties <- function(){'/rxcui/rxcui/properties'}
 get_rxp_getRxNormName <- function(){'/rxcui/rxcui'}
 get_rxp_getRxProperty <- function(){'/rxcui/rxcui/property'}
 get_rxp_getSpellingSuggestions <- function(){'/spellingsuggestions'}
-# RXTERMS ---------------------
+## RXTERMS ---------------------
 ## Metadata
 get_rxt_getRxTermsVersion <- function(){api(base=BASE_RXTERMS,path = "version")$rxtermsVersion %>% as.character()}
 ## Data
@@ -78,7 +78,7 @@ get_rxt_getAllConcepts <- function(){api(base=BASE_RXTERMS,path = "allconcepts")
 ## Other
 get_rxt_getAllRxTermInfo <- function(){'/rxcui/rxcui/allinfo'}
 get_rxt_getRxTermDisplayName <- function(){'/rxcui/rxcui/name'}
-# RXCLASS -----------------
+## RXCLASS -----------------
 ## Metadata
 get_rxc_getClassTypes <- function(){api(base=BASE_RXCLASS,path = "classTypes")$classTypeList$classTypeName %>% as.character()}
 ## Data
